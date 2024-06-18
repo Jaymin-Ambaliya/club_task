@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoIncrement();
-            $table->integer('club_id')->nullable(false);
+            $table->unsignedInteger('club_id')->nullable(false);
             $table->string('title')->nullable(false);
             $table->string('product_title')->default(null)->nullable(true);
             $table->string('type',100)->nullable(false);
+            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
         });
     }
 

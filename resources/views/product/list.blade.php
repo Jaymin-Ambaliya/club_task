@@ -32,7 +32,6 @@
             <table class="table table-striped table-hover table-bordered text-center">
                 <thead class="table-light">
                     <tr id="product_list">
-                        <th>ID</th>
                         <th>Club ID</th>
                         <th>Title</th>
                         <th>Product Title</th>
@@ -124,7 +123,6 @@
                     } else {
                         $.each(data, function(key, item) {
                             $('tbody').append('<tr>\
-                                        <td>' + item.id + '</td> \
                                         <td>' + item.club_id + '</td>\
                                         <td>' + item.title + '</td>\
                                         <td>' + item.product_title + '</td>\
@@ -157,7 +155,7 @@
 
             $('body').on('click', '#editProduct', function() {
                 var id = $(this).val();
-                console.log(id);
+
                 $.get('products/' + id + '/edit', function(data) {
 
                     $('#productModalTitle').html("Edit Product");
@@ -210,8 +208,7 @@
                 e.preventDefault();
                 var product_id = $('#id').val();
                 var url = product_id ? '/products/' + product_id : '/products';
-                console.log(product_id);
-                console.log(url);
+
                 $.ajax({
                     url: url,
                     data: $('#product_form').serialize(),
